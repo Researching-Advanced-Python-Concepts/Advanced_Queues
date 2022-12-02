@@ -1,7 +1,8 @@
 from collections import deque
+from priority_queues.queues import IterableMixin
 
 
-class Queue:
+class Queue(IterableMixin):
     def __init__(self, *elements) -> None:
         self._elements = deque(elements)
 
