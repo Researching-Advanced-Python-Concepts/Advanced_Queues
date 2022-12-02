@@ -54,4 +54,4 @@ messages.enqueue_with_priority(CRITICAL, Message("ABS engaged"))
 
 print(messages._elements)
 for msg in messages:
-    print(msg)
+    print(msg.event)
