@@ -1,5 +1,5 @@
 from collections import deque
-from priority_queues.queues import IterableMixin
+from custom_queue.priority_queues.queues import IterableMixin
 
 
 class Queue(IterableMixin):

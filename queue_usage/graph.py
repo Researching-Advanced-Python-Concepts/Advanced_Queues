@@ -39,22 +39,6 @@ class City(NamedTuple):
         )
 
 
-nodes, graph = load_graph("queue_usage/roadmap.dot", City.from_dict)
-print(nodes)
-print()
-print(graph)
-
-print()
-for neighbour in graph.neighbors(nodes["london"]):
-    print(neighbour.name)
-
-print()
-print(graph[nodes["london"]])
-print()
-for neighbour, weights in graph[nodes["london"]].items():
-    print(neighbour.name, weights["distance"])
-
-
 def sort_by(neighbors, strategy):
     # City(name='Bath', country='England', year=1090,
     # latitude=51.38, longitude=-2.36):
@@ -66,6 +50,28 @@ def by_distance(weights):
     return float(weights["distance"])
 
 
-for neighbor, weights in sort_by(graph[nodes["london"]], by_distance):
-    # 3 place ahead
-    print(f"{weights['distance']:>3} miles", neighbor.name)
+if __name__ == "__main__":
+    nodes, graph = load_graph(filename, City.from_dict)
+    print("nodes")
+    print(nodes)
+    print()
+    print("graph")
+    print(graph)
+
+    print()
+    for neighbour in graph.neighbors(nodes["london"]):
+        print(neighbour.name)
+
+    print()
+    print("graph nodes london")
+    print(graph[nodes["london"]])
+    print()
+    print("neighbour with their distance")
+    for neighbour, weights in graph[nodes["london"]].items():
+        print(neighbour.name, weights["distance"])
+
+    print()
+    print("neighbour with their distance, sorted")
+    for neighbor, weights in sort_by(graph[nodes["london"]], by_distance):
+        # 3 place ahead
+        print(f"{weights['distance']:>3} miles", neighbor.name)

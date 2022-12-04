@@ -37,21 +37,21 @@ class Message:
     event: str
 
 
-CRITICAL = 3
-IMPORTANT = 2
-NORMAL = 1
+if __name__ == "__main__":
+    CRITICAL = 3
+    IMPORTANT = 2
+    NORMAL = 1
 
-wipers = Message("Windshield wipers turned on")
-hazard_lights = Message("Hazard lights turned on")
-brakes = Message("Brake pedal depressed")
+    wipers = Message("Windshield wipers turned on")
+    hazard_lights = Message("Hazard lights turned on")
+    brakes = Message("Brake pedal depressed")
 
-messages = PriorityQueue()
-messages.enqueue_with_priority(CRITICAL, brakes)
-messages.enqueue_with_priority(IMPORTANT, wipers)
-messages.enqueue_with_priority(IMPORTANT, hazard_lights)
-messages.enqueue_with_priority(CRITICAL, Message("ABS engaged"))
+    messages = PriorityQueue()
+    messages.enqueue_with_priority(CRITICAL, brakes)
+    messages.enqueue_with_priority(IMPORTANT, wipers)
+    messages.enqueue_with_priority(IMPORTANT, hazard_lights)
+    messages.enqueue_with_priority(CRITICAL, Message("ABS engaged"))
 
-
-print(messages._elements)
-for msg in messages:
-    print(msg.event)
+    print(messages._elements)
+    for msg in messages:
+        print(msg.event)
